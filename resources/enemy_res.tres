@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dlfrrdy0ntn28"]
+
+[ext_resource type="Script" uid="uid://xngq5011yp8h" path="res://scripts/enemy_res/enemy_res.gd" id="1_ludxp"]
+
+[resource]
+script = ExtResource("1_ludxp")

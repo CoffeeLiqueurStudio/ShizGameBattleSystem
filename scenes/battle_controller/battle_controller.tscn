@@ -1,0 +1,114 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6ag7ddkcyei6"]
+
+[ext_resource type="Script" uid="uid://cm4b01hdbacss" path="res://scripts/battle_controller/battle_controller.gd" id="1_2110m"]
+[ext_resource type="Script" uid="uid://uxemds756scx" path="res://scripts/player_celll/player_cell.gd" id="2_oyadi"]
+[ext_resource type="Script" uid="uid://cvmnv1b4i3usb" path="res://scripts/enemy_celll/enemy_cell.gd" id="3_kie5r"]
+
+[node name="BattleController" type="Node2D"]
+script = ExtResource("1_2110m")
+
+[node name="PlayerCell" type="Node2D" parent="." groups=["player"]]
+position = Vector2(995, 235)
+script = ExtResource("2_oyadi")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerCell"]
+
+[node name="EnemyCell" type="Node2D" parent="." groups=["enemy"]]
+position = Vector2(128, 227)
+script = ExtResource("3_kie5r")
+
+[node name="Sprite2D" type="Sprite2D" parent="EnemyCell"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -112.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(100, 27)
+layout_mode = 2
+text = "Enemy"
+
+[node name="EnemyProgressBar" type="ProgressBar" parent="CanvasLayer/HBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(100, 27)
+layout_mode = 2
+size_flags_vertical = 3
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer2/HBoxContainer/EnemyProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -11.5
+offset_right = 44.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "HP 100/100"
+
+[node name="Label2" type="Label" parent="CanvasLayer/HBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(100, 27)
+layout_mode = 2
+text = "Player"
+
+[node name="PlayerProgressBar2" type="ProgressBar" parent="CanvasLayer/HBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(100, 27)
+layout_mode = 2
+size_flags_vertical = 3
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer2/HBoxContainer/PlayerProgressBar2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -11.5
+offset_right = 44.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "HP 100/100"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ATTACK_Button" type="Button" parent="CanvasLayer/HBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(100, 27)
+layout_mode = 2
+text = "ATTACK"
+
+[node name="DEFEND_Button" type="Button" parent="CanvasLayer/HBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(100, 27)
+layout_mode = 2
+text = "DEFEND"
+
+[node name="SKILL_Button" type="Button" parent="CanvasLayer/HBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(100, 27)
+layout_mode = 2
+text = "SKILL"
+
+[node name="RUN_Button" type="Button" parent="CanvasLayer/HBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(100, 27)
+layout_mode = 2
+text = "RUN"
