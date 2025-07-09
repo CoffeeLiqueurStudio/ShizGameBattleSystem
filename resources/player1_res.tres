@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dhtgirieh1fka"]
+
+[ext_resource type="Script" uid="uid://drrnd2hlohit7" path="res://scripts/player_res/player_res.gd" id="1_6ty02"]
+[ext_resource type="Texture2D" uid="uid://dgfgibicigmkq" path="res://assets/player/character_spritesheet.PNG" id="2_f7p3v"]
+
+[resource]
+script = ExtResource("1_6ty02")
+texture = ExtResource("2_f7p3v")
+max_hp = 50.0
+current_hp = 50.0
+min_damage = 10.0
+max_damage = 15.0
+defend = 20.0
+is_defending = false

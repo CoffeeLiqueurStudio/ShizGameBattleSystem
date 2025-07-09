@@ -1,27 +1,242 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6ag7ddkcyei6"]
+[gd_scene load_steps=14 format=3 uid="uid://c6ag7ddkcyei6"]
 
 [ext_resource type="Script" uid="uid://cm4b01hdbacss" path="res://scripts/battle_controller/battle_controller.gd" id="1_2110m"]
-[ext_resource type="Script" uid="uid://uxemds756scx" path="res://scripts/player_celll/player_cell.gd" id="2_oyadi"]
-[ext_resource type="Script" uid="uid://cvmnv1b4i3usb" path="res://scripts/enemy_celll/enemy_cell.gd" id="3_kie5r"]
+[ext_resource type="Script" uid="uid://uxemds756scx" path="res://scripts/player_cells/player1_cell.gd" id="2_oyadi"]
+[ext_resource type="Script" uid="uid://cvmnv1b4i3usb" path="res://scripts/enemy_cells/enemy1_cell.gd" id="3_kie5r"]
+[ext_resource type="Resource" uid="uid://dhtgirieh1fka" path="res://resources/player1_res.tres" id="4_7cp38"]
+[ext_resource type="Resource" uid="uid://dlfrrdy0ntn28" path="res://resources/enemy1_res.tres" id="5_gxvkc"]
+
+[sub_resource type="Animation" id="Animation_gxvkc"]
+resource_name = "Enemy1Cell_take_damage"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy1Cell:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.103918, 0.205799),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(192, 256), Vector2(214, 256), Vector2(188, 255)]
+}
+
+[sub_resource type="Animation" id="Animation_7cp38"]
+resource_name = "Player1Cell_take_damage"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player1Cell:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(879, 256), Vector2(863, 256), Vector2(896, 256), Vector2(877, 256)]
+}
+
+[sub_resource type="Animation" id="Animation_pmild"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player1Cell:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(879, 256)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemy1Cell:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(192, 256)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/PlayerDamageLabel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/PlayerDamageLabel:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/EnemyDamageLabel:text")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/EnemyDamageLabel:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pmild"]
+_data = {
+&"Enemy1Cell_take_damage": SubResource("Animation_gxvkc"),
+&"Player1Cell_take_damage": SubResource("Animation_7cp38"),
+&"RESET": SubResource("Animation_pmild")
+}
+
+[sub_resource type="Animation" id="Animation_su470"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/EnemyDamageLabel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/EnemyDamageLabel:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/PlayerDamageLabel:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+
+[sub_resource type="Animation" id="Animation_cvn1i"]
+resource_name = "Player1Cell_damage"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/PlayerDamageLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.96667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+
+[sub_resource type="Animation" id="Animation_uph8t"]
+resource_name = "Enemy1Cell_damage"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/EnemyDamageLabel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/EnemyDamageLabel:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_su470"]
+_data = {
+&"Enemy1Cell_damage": SubResource("Animation_uph8t"),
+&"Player1Cell_damage": SubResource("Animation_cvn1i"),
+&"RESET": SubResource("Animation_su470")
+}
 
 [node name="BattleController" type="Node2D"]
 script = ExtResource("1_2110m")
+player1_res = ExtResource("4_7cp38")
+enemy1_res = ExtResource("5_gxvkc")
 
-[node name="PlayerCell" type="Node2D" parent="." groups=["player"]]
-position = Vector2(995, 235)
+[node name="Player1Cell" type="Node2D" parent="." groups=["player"]]
+position = Vector2(879, 256)
 script = ExtResource("2_oyadi")
+player_res = ExtResource("4_7cp38")
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerCell"]
+[node name="Sprite2D" type="Sprite2D" parent="Player1Cell"]
+hframes = 13
+frame = 11
 
-[node name="EnemyCell" type="Node2D" parent="." groups=["enemy"]]
-position = Vector2(128, 227)
+[node name="Enemy1Cell" type="Node2D" parent="." groups=["enemy"]]
+position = Vector2(192, 256)
 script = ExtResource("3_kie5r")
+enemy_res = ExtResource("5_gxvkc")
 
-[node name="Sprite2D" type="Sprite2D" parent="EnemyCell"]
+[node name="Sprite2D" type="Sprite2D" parent="Enemy1Cell"]
+scale = Vector2(0.2, 0.2)
+region_enabled = true
+region_rect = Rect2(0, 0, 688, 1512)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -30,15 +245,15 @@ offset_top = -112.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="HBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer2"]
+[node name="HpContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer2/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/HpContainer"]
 custom_minimum_size = Vector2(100, 27)
 layout_mode = 2
 text = "Enemy"
 
-[node name="EnemyProgressBar" type="ProgressBar" parent="CanvasLayer/HBoxContainer2/HBoxContainer"]
+[node name="Enemy1ProgressBar" type="ProgressBar" parent="CanvasLayer/HBoxContainer/HpContainer"]
 custom_minimum_size = Vector2(100, 27)
 layout_mode = 2
 size_flags_vertical = 3
@@ -46,7 +261,7 @@ step = 1.0
 value = 100.0
 show_percentage = false
 
-[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer2/HBoxContainer/EnemyProgressBar"]
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/HpContainer/Enemy1ProgressBar"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -61,12 +276,12 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "HP 100/100"
 
-[node name="Label2" type="Label" parent="CanvasLayer/HBoxContainer2/HBoxContainer"]
+[node name="Label2" type="Label" parent="CanvasLayer/HBoxContainer/HpContainer"]
 custom_minimum_size = Vector2(100, 27)
 layout_mode = 2
 text = "Player"
 
-[node name="PlayerProgressBar2" type="ProgressBar" parent="CanvasLayer/HBoxContainer2/HBoxContainer"]
+[node name="Player1ProgressBar" type="ProgressBar" parent="CanvasLayer/HBoxContainer/HpContainer"]
 custom_minimum_size = Vector2(100, 27)
 layout_mode = 2
 size_flags_vertical = 3
@@ -74,7 +289,7 @@ step = 1.0
 value = 100.0
 show_percentage = false
 
-[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer2/HBoxContainer/PlayerProgressBar2"]
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/HpContainer/Player1ProgressBar"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -89,26 +304,51 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "HP 100/100"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer2"]
+[node name="ActionContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ATTACK_Button" type="Button" parent="CanvasLayer/HBoxContainer2/VBoxContainer"]
+[node name="ATTACK_Button" type="Button" parent="CanvasLayer/HBoxContainer/ActionContainer"]
 custom_minimum_size = Vector2(100, 27)
 layout_mode = 2
 text = "ATTACK"
 
-[node name="DEFEND_Button" type="Button" parent="CanvasLayer/HBoxContainer2/VBoxContainer"]
+[node name="DEFEND_Button" type="Button" parent="CanvasLayer/HBoxContainer/ActionContainer"]
 custom_minimum_size = Vector2(100, 27)
 layout_mode = 2
 text = "DEFEND"
 
-[node name="SKILL_Button" type="Button" parent="CanvasLayer/HBoxContainer2/VBoxContainer"]
+[node name="SKILL_Button" type="Button" parent="CanvasLayer/HBoxContainer/ActionContainer"]
 custom_minimum_size = Vector2(100, 27)
 layout_mode = 2
 text = "SKILL"
 
-[node name="RUN_Button" type="Button" parent="CanvasLayer/HBoxContainer2/VBoxContainer"]
+[node name="RUN_Button" type="Button" parent="CanvasLayer/HBoxContainer/ActionContainer"]
 custom_minimum_size = Vector2(100, 27)
 layout_mode = 2
 text = "RUN"
+
+[node name="EnemyDamageLabel" type="Label" parent="CanvasLayer"]
+offset_left = 306.0
+offset_top = 75.0
+offset_right = 346.0
+offset_bottom = 98.0
+
+[node name="PlayerDamageLabel" type="Label" parent="CanvasLayer"]
+offset_left = 791.0
+offset_top = 75.0
+offset_right = 831.0
+offset_bottom = 98.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pmild")
+}
+
+[node name="AnimationPlayerText" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_su470")
+}
+
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/ActionContainer/ATTACK_Button" to="." method="_on_attack_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/ActionContainer/DEFEND_Button" to="." method="_on_defend_button_pressed"]
