@@ -51,7 +51,7 @@ func enemy_turn():
 				change_turn_to_player_group()
 func _on_attack_button_pressed() -> void:
 	if active_state == states.PLAYER_TURN:
-		active_enemy.take_damage(rng.randf_range(active_player.player_res.min_damage, active_player.player_res.max_damage), "Nothing")
+		active_enemy.take_damage(rng.randf_range(active_player.player_res.min_damage, active_player.player_res.max_damage), "Nothing", 0)
 		active_state = states.ENEMY_TURN
 		change_turn_to_enemy_group()
 func _on_defend_button_pressed() -> void:
@@ -88,7 +88,8 @@ func cast_skill(skill: MagicSkill):
 	# простой эффект — наносим уро1н врагу
 	var damage = skill.power
 	var effect = skill.effect
-	active_enemy.take_damage(damage, effect)
+	var effect_max_duration = skill.max_effect_duration
+	active_enemy.take_damage(damage, effect, effect_max_duration)
 	print("Игрок использует %s! Наносит %d урона." % [skill.name, damage])
 	change_turn_to_enemy_group()
 

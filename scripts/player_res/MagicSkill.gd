@@ -5,3 +5,4 @@ extends Resource
 @export var mp_cost: int
 @export var power: int
 @export var effect: String
+@export var max_effect_duration: int
