@@ -1,7 +1,32 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dhtgirieh1fka"]
+[gd_resource type="Resource" load_steps=7 format=3 uid="uid://dhtgirieh1fka"]
 
 [ext_resource type="Script" uid="uid://drrnd2hlohit7" path="res://scripts/player_res/player_res.gd" id="1_6ty02"]
 [ext_resource type="Texture2D" uid="uid://dgfgibicigmkq" path="res://assets/player/character_spritesheet.PNG" id="2_f7p3v"]
+[ext_resource type="Script" uid="uid://b7fya5uvj2uje" path="res://scripts/player_res/MagicSkill.gd" id="2_mco2v"]
+
+[sub_resource type="Resource" id="Resource_sxhk6"]
+script = ExtResource("2_mco2v")
+name = "MAN"
+mp_cost = 20
+power = 30
+effect = "knockout"
+metadata/_custom_type_script = "uid://b7fya5uvj2uje"
+
+[sub_resource type="Resource" id="Resource_4jyy7"]
+script = ExtResource("2_mco2v")
+name = "DO"
+mp_cost = 15
+power = 20
+effect = "bleeding"
+metadata/_custom_type_script = "uid://b7fya5uvj2uje"
+
+[sub_resource type="Resource" id="Resource_mco2v"]
+script = ExtResource("2_mco2v")
+name = "KOTE"
+mp_cost = 10
+power = 10
+effect = "nothing"
+metadata/_custom_type_script = "uid://b7fya5uvj2uje"
 
 [resource]
 script = ExtResource("1_6ty02")
@@ -12,3 +37,5 @@ min_damage = 10.0
 max_damage = 15.0
 defend = 20.0
 is_defending = false
+mp = 100.0
+skills = Array[ExtResource("2_mco2v")]([SubResource("Resource_sxhk6"), SubResource("Resource_4jyy7"), SubResource("Resource_mco2v")])

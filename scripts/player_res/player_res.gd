@@ -7,3 +7,5 @@ extends Resource
 @export var max_damage: float = 0.0
 @export var defend: float = 0.0
 @export var is_defending: bool = false
+@export var mp: float = 0.0
+@export var skills: Array[MagicSkill] = []

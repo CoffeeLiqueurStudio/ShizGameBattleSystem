@@ -3,6 +3,7 @@ extends Node2D
 @onready var player1_progress_bar: ProgressBar = $CanvasLayer/HBoxContainer/HpContainer/Player1ProgressBar
 @onready var action_container: VBoxContainer = $CanvasLayer/HBoxContainer/ActionContainer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var skill_container: VBoxContainer = $CanvasLayer/HBoxContainer/SkillContainer
 
 @export var player1_res: Resource = null
 @export var enemy1_res: Resource = null
@@ -51,3 +52,37 @@ func _on_defend_button_pressed() -> void:
 		active_state = states.ENEMY_TURN
 		await get_tree().create_timer(1).timeout
 		enemy_turn()
+func _on_skill_button_pressed() -> void:
+	skill_container.show()
+	populate_skills(player1_res.skills)
+
+
+func populate_skills(skills_array: Array[MagicSkill]):
+	# очистим старые кнопки
+	for child in skill_container.get_children():
+		child.queue_free()
+
+	for skill in skills_array:
+		var btn = Button.new()
+		btn.text = "%s (MP: %d)" % [skill.name, skill.mp_cost]
+		btn.tooltip_text = skill.effect
+		btn.pressed.connect(func(): _on_skill_selected(skill))
+		skill_container.add_child(btn)
+		
+func _on_skill_selected(skill: MagicSkill):
+	cast_skill(skill)
+	skill_container.visible = false
+
+func cast_skill(skill: MagicSkill):
+	if player1_res.mp < skill.mp_cost:
+		print("Недостаточно MP!")
+		return
+	player1_res.mp -= skill.mp_cost
+	# простой эффект — наносим уро1н врагу
+	var damage = skill.power
+	active_enemy.take_damage(damage)
+	print("Игрок использует %s! Наносит %d урона." % [skill.name, damage])
+
+	await get_tree().create_timer(1).timeout
+	active_state = states.ENEMY_TURN
+	enemy_turn()
