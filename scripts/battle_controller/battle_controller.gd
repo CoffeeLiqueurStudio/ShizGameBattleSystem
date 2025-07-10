@@ -6,9 +6,9 @@ signal group_turns_ended
 @onready var action_container: VBoxContainer = $CanvasLayer/HBoxContainer/ActionContainer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var skill_container: VBoxContainer = $CanvasLayer/HBoxContainer/SkillContainer
-
 @export var player1_res: Resource = null
 @export var enemy1_res: Resource = null
+
 var group_turn = 0
 var active_enemy
 var active_player
@@ -38,20 +38,18 @@ func player_turn():
 
 func enemy_turn():
 	if active_state == states.ENEMY_TURN:
-		match active_enemy.on_effect:
-			"is_knockout":
-				await get_tree().create_timer(1).timeout
-				active_state = states.PLAYER_TURN
-				change_turn_to_player_group()
-			"is_nothing":
-				active_player.take_damage(rng.randf_range(active_enemy.enemy_res.min_damage, active_enemy.enemy_res.max_damage))
-				change_turn_to_player_group()
-			"is_bleeding":
-				active_player.take_damage(rng.randf_range(active_enemy.enemy_res.min_damage, active_enemy.enemy_res.max_damage))
-				change_turn_to_player_group()
+		if active_enemy.is_knockout == true:
+			await get_tree().create_timer(1).timeout
+			change_turn_to_player_group()
+			active_state = states.PLAYER_TURN
+		else:
+			active_player.take_damage(rng.randf_range(active_enemy.enemy_res.min_damage, active_enemy.enemy_res.max_damage))
+			await get_tree().create_timer(1).timeout
+			change_turn_to_player_group()
+			active_state = states.PLAYER_TURN
 func _on_attack_button_pressed() -> void:
 	if active_state == states.PLAYER_TURN:
-		active_enemy.take_damage(rng.randf_range(active_player.player_res.min_damage, active_player.player_res.max_damage), "Nothing", 0)
+		active_enemy.take_damage(rng.randf_range(active_player.player_res.min_damage, active_player.player_res.max_damage))
 		active_state = states.ENEMY_TURN
 		change_turn_to_enemy_group()
 func _on_defend_button_pressed() -> void:
@@ -89,7 +87,7 @@ func cast_skill(skill: MagicSkill):
 	var damage = skill.power
 	var effect = skill.effect
 	var effect_max_duration = skill.max_effect_duration
-	active_enemy.take_damage(damage, effect, effect_max_duration)
+	active_enemy.take_effect_damage(damage, effect, effect_max_duration)
 	print("Игрок использует %s! Наносит %d урона." % [skill.name, damage])
 	change_turn_to_enemy_group()
 

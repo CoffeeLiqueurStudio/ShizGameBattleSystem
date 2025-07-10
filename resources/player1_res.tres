@@ -10,7 +10,6 @@ name = "MAN"
 mp_cost = 20
 power = 30
 effect = "knockout"
-effect_duration = 0
 max_effect_duration = 1
 metadata/_custom_type_script = "uid://b7fya5uvj2uje"
 
@@ -20,7 +19,6 @@ name = "DO"
 mp_cost = 15
 power = 20
 effect = "bleeding"
-effect_duration = 0
 max_effect_duration = 2
 metadata/_custom_type_script = "uid://b7fya5uvj2uje"
 
@@ -30,7 +28,6 @@ name = "KOTE"
 mp_cost = 10
 power = 10
 effect = "nothing"
-effect_duration = 0
 max_effect_duration = 0
 metadata/_custom_type_script = "uid://b7fya5uvj2uje"
 
