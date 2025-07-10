@@ -355,6 +355,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_su470")
 }
 
+[connection signal="group_turns_ended" from="." to="Player1Cell" method="_on_battle_controller_group_turns_ended"]
+[connection signal="group_turns_ended" from="." to="Enemy1Cell" method="_on_battle_controller_group_turns_ended"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/ActionContainer/ATTACK_Button" to="." method="_on_attack_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/ActionContainer/DEFEND_Button" to="." method="_on_defend_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/ActionContainer/SKILL_Button" to="." method="_on_skill_button_pressed"]

@@ -26,3 +26,7 @@ func set_health(progress_bar, health, max_health):
 	progress_bar.value = health
 	progress_bar.max_value = max_health
 	progress_bar.get_node("Label").text = "HP: %d/%d" % [health, max_health]
+
+
+func _on_battle_controller_group_turns_ended() -> void:
+	pass
