@@ -8,6 +8,7 @@ signal group_turns_ended
 @onready var action_container: VBoxContainer = $CanvasLayer/Panel/HBoxContainer/ActionContainer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var skill_container: VBoxContainer = $CanvasLayer/Panel/HBoxContainer/SkillContainer
+@onready var action_label: Label = $CanvasLayer/ActionLabel
 
 @export var player1_res: Resource = null
 @export var enemy1_res: Resource = null
@@ -30,7 +31,7 @@ func _physics_process(delta: float) -> void:
 			action_container.show()
 		states.ENEMY_TURN:
 			action_container.hide()
-	
+
 
 func player_turn():
 	action_container.show()
@@ -81,7 +82,7 @@ func _on_skill_selected(skill: MagicSkill):
 
 func cast_skill(skill: MagicSkill):
 	if player1_res.current_mp < skill.mp_cost:
-		print("Недостаточно MP!")
+		action_label.text = ("Недостаточно MP!")
 		return
 	player1_res.current_mp -= skill.mp_cost
 	# простой эффект — наносим уро1н врагу
@@ -90,7 +91,7 @@ func cast_skill(skill: MagicSkill):
 	var effect_max_duration = skill.max_effect_duration
 	active_player.set_mana()
 	active_enemy.take_effect_damage(damage, effect, effect_max_duration)
-	print("Игрок использует %s! Наносит %d урона." % [skill.name, damage])
+	action_label.text = ("Player use %s! and damage %d to enemy and apply effect %s!" % [skill.name, damage, skill.effect])
 	change_turn_to_enemy_group()
 
 func change_turn_to_enemy_group():

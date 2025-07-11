@@ -6,6 +6,8 @@ extends Node2D
 @onready var animation_player: AnimationPlayer = $"../AnimationPlayer"
 @onready var enemy_1_damage_label: Label = $Enemy1DamageLabel
 @onready var animation_player_text: AnimationPlayer = $"../AnimationPlayerText"
+@onready var action_label: Label = $"../CanvasLayer/ActionLabel"
+
 enum states {IDLE, TAKE_DAMAGE}
 var active_state = states.IDLE
 var is_knockout: bool = false
@@ -25,6 +27,7 @@ func take_damage(damage,):
 	active_state = states.TAKE_DAMAGE
 	enemy_res.current_hp = max(0, enemy_res.current_hp - damage)
 	set_health(enemy_1_progress_bar, enemy_res.current_hp, enemy_res.max_hp)
+	action_label.text = ("Player attack and damage %d to enemy." % [damage])
 	enemy_1_damage_label.text = str(damage)
 	animation_player_text.play(str(name)+"_damage")
 func take_effect_damage(damage, effect, effect_max_duration):
