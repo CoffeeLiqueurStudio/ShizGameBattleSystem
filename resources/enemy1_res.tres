@@ -6,9 +6,9 @@
 [resource]
 script = ExtResource("1_y6kko")
 texture = ExtResource("2_moytf")
-max_hp = 75.0
-current_hp = 75.0
-min_damage = 15.0
-max_damage = 20.0
-defend = 0.0
+max_hp = 50
+current_hp = 50
+min_damage = 10
+max_damage = 15
+defend = 3
 is_defending = false

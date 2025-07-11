@@ -1,10 +1,68 @@
-[gd_scene load_steps=14 format=3 uid="uid://c6ag7ddkcyei6"]
+[gd_scene load_steps=25 format=3 uid="uid://c6ag7ddkcyei6"]
 
 [ext_resource type="Script" uid="uid://cm4b01hdbacss" path="res://scripts/battle_controller/battle_controller.gd" id="1_2110m"]
 [ext_resource type="Script" uid="uid://uxemds756scx" path="res://scripts/player_cells/player1_cell.gd" id="2_oyadi"]
 [ext_resource type="Script" uid="uid://cvmnv1b4i3usb" path="res://scripts/enemy_cells/enemy1_cell.gd" id="3_kie5r"]
 [ext_resource type="Resource" uid="uid://dhtgirieh1fka" path="res://resources/player1_res.tres" id="4_7cp38"]
 [ext_resource type="Resource" uid="uid://dlfrrdy0ntn28" path="res://resources/enemy1_res.tres" id="5_gxvkc"]
+[ext_resource type="FontFile" uid="uid://cpbehyoknh0b6" path="res://assets/fonts/NESCyrillic.ttf" id="6_7cp38"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gxvkc"]
+bg_color = Color(0.835718, 3.22476e-06, 7.70092e-07, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7cp38"]
+bg_color = Color(0.332899, 0.695287, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pmild"]
+bg_color = Color(0.509804, 0.470588, 0.454902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_572am"]
+bg_color = Color(0.0949548, 0.726071, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5be4u"]
+bg_color = Color(0.508411, 0.468638, 0.454545, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sf8fu"]
+bg_color = Color(0.195513, 0.449679, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1cys"]
+bg_color = Color(0.36549, 0.414565, 0.561948, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvn1i"]
+bg_color = Color(0.364706, 0.415686, 0.560784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uph8t"]
+bg_color = Color(0.364706, 0.415686, 0.560784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_su470"]
+bg_color = Color(0.364706, 0.415686, 0.560784, 1)
 
 [sub_resource type="Animation" id="Animation_gxvkc"]
 resource_name = "Enemy1Cell_take_damage"
@@ -67,7 +125,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/PlayerDamageLabel:scale")
+tracks/2/path = NodePath("Player1Cell/Player1DamageLabel:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -79,7 +137,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/PlayerDamageLabel:text")
+tracks/3/path = NodePath("Player1Cell/Player1DamageLabel:text")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -91,7 +149,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/EnemyDamageLabel:text")
+tracks/4/path = NodePath("Enemy1Cell/Enemy1DamageLabel:text")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -103,7 +161,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/EnemyDamageLabel:scale")
+tracks/5/path = NodePath("Enemy1Cell/Enemy1DamageLabel:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -126,7 +184,7 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/EnemyDamageLabel:scale")
+tracks/0/path = NodePath("Enemy1Cell/Enemy1DamageLabel:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -138,7 +196,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/EnemyDamageLabel:text")
+tracks/1/path = NodePath("Enemy1Cell/Enemy1DamageLabel:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -154,7 +212,7 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/PlayerDamageLabel:text")
+tracks/0/path = NodePath("Player1Cell/Player1DamageLabel:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -169,7 +227,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/EnemyDamageLabel:scale")
+tracks/0/path = NodePath("Enemy1Cell/Enemy1DamageLabel:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -181,7 +239,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/EnemyDamageLabel:text")
+tracks/1/path = NodePath("Enemy1Cell/Enemy1DamageLabel:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -193,7 +251,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/PlayerDamageLabel:text")
+tracks/2/path = NodePath("Player1Cell/Player1DamageLabel:text")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -221,8 +279,16 @@ script = ExtResource("2_oyadi")
 player_res = ExtResource("4_7cp38")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player1Cell"]
-hframes = 13
-frame = 11
+scale = Vector2(0.2, 0.2)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 48, 408, 664)
+
+[node name="Player1DamageLabel" type="Label" parent="Player1Cell"]
+offset_left = -86.0
+offset_top = -11.0
+offset_right = -53.0
+offset_bottom = 12.0
 
 [node name="Enemy1Cell" type="Node2D" parent="." groups=["enemy"]]
 position = Vector2(192, 256)
@@ -232,118 +298,190 @@ enemy_res = ExtResource("5_gxvkc")
 [node name="Sprite2D" type="Sprite2D" parent="Enemy1Cell"]
 scale = Vector2(0.2, 0.2)
 region_enabled = true
-region_rect = Rect2(0, 0, 688, 1512)
+region_rect = Rect2(200, 152, 520, 1040)
+
+[node name="Enemy1DamageLabel" type="Label" parent="Enemy1Cell"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 68.0
+offset_top = -11.0
+offset_right = 117.0
+offset_bottom = 12.0
+grow_vertical = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+[node name="Panel" type="Panel" parent="CanvasLayer"]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -112.0
+offset_top = -164.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -166.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="HpContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+[node name="HpContainer" type="VBoxContainer" parent="CanvasLayer/Panel/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/HpContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Panel/HBoxContainer/HpContainer"]
 custom_minimum_size = Vector2(100, 27)
 layout_mode = 2
-text = "Enemy"
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("6_7cp38")
+theme_override_font_sizes/font_size = 30
+text = " Enemy "
 
-[node name="Enemy1ProgressBar" type="ProgressBar" parent="CanvasLayer/HBoxContainer/HpContainer"]
+[node name="Enemy1ProgressBar" type="ProgressBar" parent="CanvasLayer/Panel/HBoxContainer/HpContainer"]
 custom_minimum_size = Vector2(100, 27)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("6_7cp38")
+theme_override_styles/background = SubResource("StyleBoxFlat_gxvkc")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7cp38")
 step = 1.0
-value = 100.0
+value = 50.0
 show_percentage = false
 
-[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/HpContainer/Enemy1ProgressBar"]
+[node name="Label" type="Label" parent="CanvasLayer/Panel/HBoxContainer/HpContainer/Enemy1ProgressBar"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -11.5
-offset_right = 44.0
-offset_bottom = 11.5
+anchor_bottom = 1.0
+offset_left = -47.0
+offset_top = -23.0
+offset_right = 47.0
 grow_horizontal = 2
-grow_vertical = 2
-text = "HP 100/100"
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_7cp38")
+theme_override_font_sizes/font_size = 20
+text = "HP 50/100"
 
-[node name="Label2" type="Label" parent="CanvasLayer/HBoxContainer/HpContainer"]
+[node name="Label2" type="Label" parent="CanvasLayer/Panel/HBoxContainer/HpContainer"]
 custom_minimum_size = Vector2(100, 27)
 layout_mode = 2
-text = "Player"
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("6_7cp38")
+theme_override_font_sizes/font_size = 30
+text = " PLAYER"
 
-[node name="Player1ProgressBar" type="ProgressBar" parent="CanvasLayer/HBoxContainer/HpContainer"]
+[node name="Player1HpProgressBar" type="ProgressBar" parent="CanvasLayer/Panel/HBoxContainer/HpContainer"]
 custom_minimum_size = Vector2(100, 27)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 8
+size_flags_vertical = 6
+theme_override_styles/background = SubResource("StyleBoxFlat_pmild")
+theme_override_styles/fill = SubResource("StyleBoxFlat_572am")
 step = 1.0
-value = 100.0
+value = 50.0
 show_percentage = false
 
-[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/HpContainer/Player1ProgressBar"]
+[node name="Label" type="Label" parent="CanvasLayer/Panel/HBoxContainer/HpContainer/Player1HpProgressBar"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -11.5
-offset_right = 44.0
-offset_bottom = 11.5
+anchor_bottom = 1.0
+offset_left = -47.0
+offset_top = -23.0
+offset_right = 47.0
 grow_horizontal = 2
-grow_vertical = 2
-text = "HP 100/100"
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_7cp38")
+theme_override_font_sizes/font_size = 20
+text = "HP 50/100"
 
-[node name="ActionContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+[node name="Player1MpProgressBar" type="ProgressBar" parent="CanvasLayer/Panel/HBoxContainer/HpContainer"]
+custom_minimum_size = Vector2(100, 27)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 6
+theme_override_styles/background = SubResource("StyleBoxFlat_5be4u")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sf8fu")
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/HBoxContainer/HpContainer/Player1MpProgressBar"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -47.0
+offset_top = -23.0
+offset_right = 47.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_7cp38")
+theme_override_font_sizes/font_size = 20
+text = "MP 50/100"
+
+[node name="ActionContainer" type="VBoxContainer" parent="CanvasLayer/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ATTACK_Button" type="Button" parent="CanvasLayer/HBoxContainer/ActionContainer"]
+[node name="ATTACK_Button" type="Button" parent="CanvasLayer/Panel/HBoxContainer/ActionContainer"]
 custom_minimum_size = Vector2(100, 27)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_7cp38")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_n1cys")
 text = "ATTACK"
 
-[node name="DEFEND_Button" type="Button" parent="CanvasLayer/HBoxContainer/ActionContainer"]
+[node name="DEFEND_Button" type="Button" parent="CanvasLayer/Panel/HBoxContainer/ActionContainer"]
 custom_minimum_size = Vector2(100, 27)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_7cp38")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_cvn1i")
 text = "DEFEND"
 
-[node name="SKILL_Button" type="Button" parent="CanvasLayer/HBoxContainer/ActionContainer"]
+[node name="SKILL_Button" type="Button" parent="CanvasLayer/Panel/HBoxContainer/ActionContainer"]
 custom_minimum_size = Vector2(100, 27)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_7cp38")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_uph8t")
 text = "SKILL"
 
-[node name="RUN_Button" type="Button" parent="CanvasLayer/HBoxContainer/ActionContainer"]
+[node name="RUN_Button2" type="Button" parent="CanvasLayer/Panel/HBoxContainer/ActionContainer"]
 custom_minimum_size = Vector2(100, 27)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_7cp38")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_su470")
+text = "INVENTORY"
+
+[node name="RUN_Button" type="Button" parent="CanvasLayer/Panel/HBoxContainer/ActionContainer"]
+custom_minimum_size = Vector2(100, 27)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_7cp38")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_su470")
 text = "RUN"
 
-[node name="SkillContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+[node name="SkillContainer" type="VBoxContainer" parent="CanvasLayer/Panel/HBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="EnemyDamageLabel" type="Label" parent="CanvasLayer"]
-offset_left = 306.0
-offset_top = 75.0
-offset_right = 346.0
-offset_bottom = 98.0
-
-[node name="PlayerDamageLabel" type="Label" parent="CanvasLayer"]
-offset_left = 791.0
-offset_top = 75.0
-offset_right = 831.0
-offset_bottom = 98.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -357,6 +495,6 @@ libraries = {
 
 [connection signal="group_turns_ended" from="." to="Player1Cell" method="_on_battle_controller_group_turns_ended"]
 [connection signal="group_turns_ended" from="." to="Enemy1Cell" method="_on_battle_controller_group_turns_ended"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/ActionContainer/ATTACK_Button" to="." method="_on_attack_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/ActionContainer/DEFEND_Button" to="." method="_on_defend_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/ActionContainer/SKILL_Button" to="." method="_on_skill_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/HBoxContainer/ActionContainer/ATTACK_Button" to="." method="_on_attack_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/HBoxContainer/ActionContainer/DEFEND_Button" to="." method="_on_defend_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/HBoxContainer/ActionContainer/SKILL_Button" to="." method="_on_skill_button_pressed"]

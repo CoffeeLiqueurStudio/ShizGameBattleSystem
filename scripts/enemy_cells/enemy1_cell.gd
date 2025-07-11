@@ -2,10 +2,12 @@ extends Node2D
 
 @export var enemy_res: Resource = null
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var enemy_1_progress_bar: ProgressBar = $"../CanvasLayer/HBoxContainer/HpContainer/Enemy1ProgressBar"
+@onready var enemy_1_progress_bar: ProgressBar = $"../CanvasLayer/Panel/HBoxContainer/HpContainer/Enemy1ProgressBar"
 @onready var animation_player: AnimationPlayer = $"../AnimationPlayer"
-@onready var enemy_damage_label: Label = $"../CanvasLayer/EnemyDamageLabel"
+@onready var enemy_1_damage_label: Label = $Enemy1DamageLabel
 @onready var animation_player_text: AnimationPlayer = $"../AnimationPlayerText"
+enum states {IDLE, TAKE_DAMAGE}
+var active_state = states.IDLE
 var is_knockout: bool = false
 var is_blind: bool = false
 var on_effect1: String = ""
@@ -20,11 +22,13 @@ func _ready() -> void:
 	set_health(enemy_1_progress_bar, enemy_res.current_hp, enemy_res.max_hp)
 	
 func take_damage(damage,):
+	active_state = states.TAKE_DAMAGE
 	enemy_res.current_hp = max(0, enemy_res.current_hp - damage)
 	set_health(enemy_1_progress_bar, enemy_res.current_hp, enemy_res.max_hp)
-	enemy_damage_label.text = str(damage)
+	enemy_1_damage_label.text = str(damage)
 	animation_player_text.play(str(name)+"_damage")
 func take_effect_damage(damage, effect, effect_max_duration):
+	active_state = states.TAKE_DAMAGE
 	print(effect)
 	match effect:
 		"knockout":
@@ -61,7 +65,7 @@ func take_effect_damage(damage, effect, effect_max_duration):
 				pass
 	enemy_res.current_hp = max(0, enemy_res.current_hp - damage)
 	set_health(enemy_1_progress_bar, enemy_res.current_hp, enemy_res.max_hp)
-	enemy_damage_label.text = str(damage)
+	enemy_1_damage_label.text = str(damage)
 	animation_player_text.play(str(name)+"_damage")
 func set_health(progress_bar, health, max_health):
 	progress_bar.value = health
@@ -98,5 +102,12 @@ func _on_battle_controller_group_turns_ended() -> void:
 		
 
 func _physics_process(delta: float) -> void:
-	print("1:"+on_effect1)
-	print("2:"+on_effect2)
+	#print("1:"+on_effect1)
+	#print("2:"+on_effect2)
+	match active_state:
+		states.IDLE:
+			pass
+		states.TAKE_DAMAGE:
+			animation_player.play(str(name)+"_take_damage")
+			await animation_player.animation_finished
+			active_state = states.IDLE
