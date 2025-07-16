@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 			await animation_player.animation_finished
 			active_state = states.move_off
 
-	if path_follow_2d.progress_ratio >= 0.9:
+	if path_follow_2d.progress_ratio >= 0.8:
 		if active_state == states.move_on:
 			active_state = states.attack
 			await animation_player.animation_finished

@@ -3,7 +3,6 @@ extends Node2D
 @export var enemy_res: Resource = null
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var enemy_1_progress_bar: ProgressBar = $"../CanvasLayer/Panel/HBoxContainer/HpContainer/Enemy1ProgressBar"
-@onready var animation_player: AnimationPlayer = $"../AnimationPlayer"
 @onready var enemy_1_damage_label: Label = $Enemy1DamageLabel
 @onready var animation_player_text: AnimationPlayer = $"../AnimationPlayerText"
 @onready var action_label: Label = $"../CanvasLayer/ActionLabel"
@@ -109,6 +108,6 @@ func _physics_process(delta: float) -> void:
 		states.IDLE:
 			pass
 		states.TAKE_DAMAGE:
-			animation_player.play(str(name)+"_take_damage")
-			await animation_player.animation_finished
+			#animation_player.play(str(name)+"_take_damage")
+			#await animation_player.animation_finished
 			active_state = states.IDLE

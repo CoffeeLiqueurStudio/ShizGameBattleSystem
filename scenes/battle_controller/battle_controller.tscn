@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c6ag7ddkcyei6"]
+[gd_scene load_steps=35 format=3 uid="uid://c6ag7ddkcyei6"]
 
 [ext_resource type="Script" uid="uid://cm4b01hdbacss" path="res://scripts/battle_controller/battle_controller.gd" id="1_2110m"]
 [ext_resource type="Script" uid="uid://uxemds756scx" path="res://scripts/player_cells/player1_cell.gd" id="2_oyadi"]
@@ -9,8 +9,8 @@
 [ext_resource type="Script" uid="uid://b5esh446prmcq" path="res://scripts/battle_controller/battle_path_2d.gd" id="8_572am"]
 [ext_resource type="Script" uid="uid://bif7b0kb4yp17" path="res://scripts/battle_controller/enemy_battle_path_2d_2.gd" id="9_n1cys"]
 
-[sub_resource type="Animation" id="Animation_572am"]
-resource_name = "idle"
+[sub_resource type="Animation" id="Animation_sf8fu"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -39,6 +39,21 @@ tracks/0/keys = {
 "values": [2]
 }
 
+[sub_resource type="Animation" id="Animation_572am"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
 [sub_resource type="Animation" id="Animation_5be4u"]
 resource_name = "move"
 tracks/0/type = "value"
@@ -54,7 +69,15 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_sf8fu"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sf8fu"]
+_data = {
+&"RESET": SubResource("Animation_sf8fu"),
+&"attack": SubResource("Animation_n1cys"),
+&"idle": SubResource("Animation_572am"),
+&"move": SubResource("Animation_5be4u")
+}
+
+[sub_resource type="Animation" id="Animation_vgm1q"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -66,15 +89,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_sf8fu"]
-_data = {
-&"RESET": SubResource("Animation_sf8fu"),
-&"attack": SubResource("Animation_n1cys"),
-&"idle": SubResource("Animation_572am"),
-&"move": SubResource("Animation_5be4u")
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_skl5n"]
@@ -120,21 +135,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1]
-}
-
-[sub_resource type="Animation" id="Animation_vgm1q"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vgm1q"]
@@ -201,72 +201,6 @@ bg_color = Color(0.364706, 0.415686, 0.560784, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_su470"]
 bg_color = Color(0.364706, 0.415686, 0.560784, 1)
-
-[sub_resource type="Animation" id="Animation_gxvkc"]
-resource_name = "Enemy1Cell_take_damage"
-length = 0.3
-
-[sub_resource type="Animation" id="Animation_7cp38"]
-resource_name = "Player1Cell_take_damage"
-length = 0.6
-
-[sub_resource type="Animation" id="Animation_pmild"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player1Cell/Player1DamageLabel:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Player1Cell/Player1DamageLabel:text")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [""]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Enemy1Cell/Enemy1DamageLabel:text")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [""]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Enemy1Cell/Enemy1DamageLabel:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pmild"]
-_data = {
-&"Enemy1Cell_take_damage": SubResource("Animation_gxvkc"),
-&"Player1Cell_take_damage": SubResource("Animation_7cp38"),
-&"RESET": SubResource("Animation_pmild")
-}
 
 [sub_resource type="Animation" id="Animation_uph8t"]
 resource_name = "Enemy1Cell_damage"
@@ -369,7 +303,6 @@ enemy1_res = ExtResource("5_gxvkc")
 
 [node name="Player1Cell" type="Node2D" parent="." groups=["player"]]
 position = Vector2(879, 256)
-scale = Vector2(1, 1)
 script = ExtResource("2_oyadi")
 player_res = ExtResource("4_7cp38")
 
@@ -586,7 +519,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_su470")
 text = "RUN"
 
 [node name="SkillContainer" type="VBoxContainer" parent="CanvasLayer/Panel/HBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -601,21 +533,16 @@ theme_override_font_sizes/font_size = 30
 text = "
 "
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_pmild")
-}
-
 [node name="AnimationPlayerText" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_su470")
 }
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="PlayerPath2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_n1cys")
 script = ExtResource("8_572am")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PlayerPathFollow2D" type="PathFollow2D" parent="PlayerPath2D"]
 
 [node name="enemyPath2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_572am")
@@ -626,10 +553,9 @@ script = ExtResource("9_n1cys")
 [connection signal="enemy_animation" from="." to="enemyPath2D" method="_on_battle_controller_enemy_animation"]
 [connection signal="group_turns_ended" from="." to="Player1Cell" method="_on_battle_controller_group_turns_ended"]
 [connection signal="group_turns_ended" from="." to="Enemy1Cell" method="_on_battle_controller_group_turns_ended"]
-[connection signal="player_animation" from="." to="Path2D" method="_on_battle_controller_player_animation"]
+[connection signal="player_animation" from="." to="PlayerPath2D" method="_on_battle_controller_player_animation"]
 [connection signal="pressed" from="CanvasLayer/Panel/HBoxContainer/ActionContainer/ATTACK_Button" to="." method="_on_attack_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/HBoxContainer/ActionContainer/DEFEND_Button" to="." method="_on_defend_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/HBoxContainer/ActionContainer/SKILL_Button" to="." method="_on_skill_button_pressed"]
-[connection signal="player_animation_end" from="Path2D" to="." method="_on_path_2d_player_animation_end"]
-[connection signal="enemy_animation_end" from="enemyPath2D" to="." method="_on_path_2d_2_enemy_animation_end"]
+[connection signal="player_animation_end" from="PlayerPath2D" to="." method="_on_player_path_2d_player_animation_end"]
 [connection signal="enemy_animation_end" from="enemyPath2D" to="." method="_on_enemy_path_2d_enemy_animation_end"]
