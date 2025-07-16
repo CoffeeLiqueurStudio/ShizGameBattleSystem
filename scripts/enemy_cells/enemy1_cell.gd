@@ -105,8 +105,6 @@ func _on_battle_controller_group_turns_ended() -> void:
 		
 
 func _physics_process(delta: float) -> void:
-	#print("1:"+on_effect1)
-	#print("2:"+on_effect2)
 	match active_state:
 		states.IDLE:
 			pass

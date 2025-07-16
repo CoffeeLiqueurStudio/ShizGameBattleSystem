@@ -1,6 +1,6 @@
 extends Resource
 
-@export var texture: Texture = null
+@export var texture: Texture
 @export var max_hp: int
 @export var current_hp: int
 @export var min_damage: int

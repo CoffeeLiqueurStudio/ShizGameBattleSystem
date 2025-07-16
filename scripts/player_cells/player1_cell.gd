@@ -3,6 +3,7 @@ extends Node2D
 @export var player_res: Resource = null
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var player_1_hp_progress_bar: ProgressBar = $"../CanvasLayer/Panel/HBoxContainer/HpContainer/Player1HpProgressBar"
+
 @onready var player_1_mp_progress_bar: ProgressBar = $"../CanvasLayer/Panel/HBoxContainer/HpContainer/Player1MpProgressBar"
 @onready var animation_player: AnimationPlayer = $"../AnimationPlayer"
 @onready var player_1_damage_label: Label = $Player1DamageLabel

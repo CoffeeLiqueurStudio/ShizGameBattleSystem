@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://drrnd2hlohit7" path="res://scripts/player_res/player_res.gd" id="1_6ty02"]
 [ext_resource type="Script" uid="uid://b7fya5uvj2uje" path="res://scripts/player_res/MagicSkill.gd" id="2_mco2v"]
-[ext_resource type="Texture2D" uid="uid://ddvuoydkej6er" path="res://assets/player/IMG_9145.PNG" id="3_mco2v"]
+[ext_resource type="Texture2D" uid="uid://dqafgyrxt6w2r" path="res://assets/player/playersheet.png" id="3_mco2v"]
 
 [sub_resource type="Resource" id="Resource_sxhk6"]
 script = ExtResource("2_mco2v")
