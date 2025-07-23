@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=10 format=3 uid="uid://dhtgirieh1fka"]
+[gd_resource type="Resource" script_class="PlayerResource" load_steps=10 format=3 uid="uid://dhtgirieh1fka"]
 
 [ext_resource type="Script" uid="uid://drrnd2hlohit7" path="res://scripts/player_res/player_res.gd" id="1_6ty02"]
 [ext_resource type="Script" uid="uid://b7fya5uvj2uje" path="res://scripts/player_res/MagicSkill.gd" id="2_mco2v"]

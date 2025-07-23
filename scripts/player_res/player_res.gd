@@ -1,5 +1,5 @@
 extends Resource
-
+class_name PlayerResource
 @export var texture: Texture
 @export var max_hp: int
 @export var current_hp: int

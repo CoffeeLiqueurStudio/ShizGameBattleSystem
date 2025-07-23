@@ -1,9 +1,13 @@
 extends Node2D
 
+@export var enemy_resources: Array[EnemyResource] = []
+var player_resources: Array[PlayerResource] = []
+
 var pixel_font: Font = preload("res://assets/fonts/NESCyrillic.ttf")
 signal group_turns_ended
 signal player_animation
 signal enemy_animation
+
 @onready var enemy_1_progress_bar: ProgressBar = $CanvasLayer/Panel/HBoxContainer/HpContainer/Enemy1ProgressBar
 @onready var player_1_hp_progress_bar: ProgressBar = $CanvasLayer/Panel/HBoxContainer/HpContainer/Player1HpProgressBar
 @onready var player_1_mp_progress_bar: ProgressBar = $CanvasLayer/Panel/HBoxContainer/HpContainer/Player1MpProgressBar
@@ -14,11 +18,14 @@ signal enemy_animation
 @onready var player_path_follow_2d: PathFollow2D = $PlayerPath2D/PlayerPathFollow2D
 @onready var enemy_path_2d: Path2D = $enemyPath2D
 @onready var enemy_path_follow_2d: PathFollow2D = $enemyPath2D/enemyPathFollow2D
+@onready var enemy_container: VBoxContainer = $CanvasLayer/Panel/HBoxContainer/EnemyContainer
 
 @export var player1_res: Resource = null
 @export var enemy1_res: Resource = null
 
 var group_turn = 0
+var chosed_enemy
+var selected_enemy
 var active_enemy
 var active_player
 enum states {PLAYER_TURN, ENEMY_TURN}
@@ -30,6 +37,7 @@ func _ready() -> void:
 	action_container.hide()
 	active_enemy = get_tree().get_first_node_in_group("enemy")
 	active_player = get_tree().get_first_node_in_group("player")
+	create_enemy_list(enemy_resources)
 func _physics_process(delta: float) -> void:
 	match active_state:
 		states.PLAYER_TURN:
@@ -83,7 +91,7 @@ func populate_skills(skills_array: Array[MagicSkill]):
 	for skill in skills_array:
 		var btn = Button.new()
 		btn.add_theme_font_size_override("font_size", 20)
-		btn.add_theme_font_override("font", pixel_font)
+		#btn.add_theme_font_override("font", pixel_font)
 		btn.text = "%s (MP: %d)" % [skill.name, skill.mp_cost]
 		btn.tooltip_text = skill.effect
 		btn.pressed.connect(func(): _on_skill_selected(skill))
@@ -130,3 +138,21 @@ func _on_enemy_path_2d_enemy_animation_end() -> void:
 func _on_player_path_2d_player_animation_end() -> void:
 	active_player.reparent(self)
 	change_turn_to_enemy_group()
+
+func create_enemy_list(enemys_array: Array[EnemyResource]):
+	for child in enemy_container.get_children():
+		child.queue_free()
+
+	for i in enemys_array.size():
+		var enemy = enemys_array[i]
+		var btn = Button.new()
+		btn.add_theme_font_size_override("font_size", 20)
+		btn.add_theme_font_override("font", pixel_font)
+		btn.text = "%s" % [enemy.name]
+		btn.mouse_entered.connect(func(): _on_enemy_selected(i))
+		btn.pressed.connect(func(): _on_enemy_chosed(i))
+		enemy_container.add_child(btn)
+func _on_enemy_selected(i):
+	print("selected" + str(i))
+func _on_enemy_chosed(i):
+	print("chosed" + str(i))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://c6ag7ddkcyei6"]
+[gd_scene load_steps=36 format=3 uid="uid://c6ag7ddkcyei6"]
 
 [ext_resource type="Script" uid="uid://cm4b01hdbacss" path="res://scripts/battle_controller/battle_controller.gd" id="1_2110m"]
 [ext_resource type="Script" uid="uid://xngq5011yp8h" path="res://scripts/enemy_res/enemy_res.gd" id="2_n1cys"]
@@ -7,9 +7,7 @@
 [ext_resource type="Resource" uid="uid://dhtgirieh1fka" path="res://resources/player1_res.tres" id="4_7cp38"]
 [ext_resource type="Resource" uid="uid://dlfrrdy0ntn28" path="res://resources/enemy1_res.tres" id="5_gxvkc"]
 [ext_resource type="FontFile" uid="uid://cpbehyoknh0b6" path="res://assets/fonts/NESCyrillic.ttf" id="6_7cp38"]
-[ext_resource type="Resource" uid="uid://dqwedt7o1x1ht" path="res://resources/enemy2_res.tres" id="7_cvn1i"]
 [ext_resource type="Script" uid="uid://b5esh446prmcq" path="res://scripts/battle_controller/battle_path_2d.gd" id="8_572am"]
-[ext_resource type="Script" uid="uid://bkjti0a7sgxsb" path="res://scripts/enemy_cells/enemy2_cell.gd" id="8_uph8t"]
 [ext_resource type="Script" uid="uid://bif7b0kb4yp17" path="res://scripts/battle_controller/enemy_battle_path_2d_2.gd" id="9_n1cys"]
 
 [sub_resource type="Animation" id="Animation_sf8fu"]
@@ -85,7 +83,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Enemy1CellSprite2D:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -100,7 +98,7 @@ resource_name = "attack"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Enemy1CellSprite2D:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -115,14 +113,14 @@ resource_name = "idle"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Enemy1CellSprite2D:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_ecgwq"]
@@ -130,7 +128,7 @@ resource_name = "move"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Enemy1CellSprite2D:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -146,74 +144,6 @@ _data = {
 &"attack": SubResource("Animation_skl5n"),
 &"idle": SubResource("Animation_wejnu"),
 &"move": SubResource("Animation_ecgwq")
-}
-
-[sub_resource type="Animation" id="Animation_gqcug"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Enemy2CellSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_gdedm"]
-resource_name = "attack"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Enemy2CellSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-
-[sub_resource type="Animation" id="Animation_8cxbv"]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Enemy2CellSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_sainw"]
-resource_name = "move"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Enemy2CellSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_sainw"]
-_data = {
-&"RESET": SubResource("Animation_gqcug"),
-&"attack": SubResource("Animation_gdedm"),
-&"idle": SubResource("Animation_8cxbv"),
-&"move": SubResource("Animation_sainw")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gxvkc"]
@@ -279,29 +209,25 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Enemy1Cell/Enemy1CellDamageLabel:text")
+tracks/0/path = NodePath("Enemy1Cell/Enemy1DamageLabel:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1.93333),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [""]
-}
-
-[sub_resource type="Animation" id="Animation_5x62b"]
-resource_name = "Enemy2Cell_damage"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Enemy2Cell/Enemy2CellDamageLabel:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1.96667),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemy1Cell/Enemy1DamageLabel:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
 "values": [""]
 }
 
@@ -323,11 +249,46 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_su470"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy1Cell/Enemy1DamageLabel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemy1Cell/Enemy1DamageLabel:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player1Cell/Player1DamageLabel:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_su470"]
 _data = {
 &"Enemy1Cell_damage": SubResource("Animation_uph8t"),
-&"Enemy2Cell_damage": SubResource("Animation_5x62b"),
 &"Player1Cell_damage": SubResource("Animation_cvn1i"),
 &"RESET": SubResource("Animation_su470")
 }
@@ -338,7 +299,7 @@ _data = {
 
 [node name="BattleController" type="Node2D"]
 script = ExtResource("1_2110m")
-enemy_resources = Array[ExtResource("2_n1cys")]([ExtResource("5_gxvkc"), ExtResource("7_cvn1i")])
+enemy_resources = Array[ExtResource("2_n1cys")]([ExtResource("5_gxvkc")])
 player1_res = ExtResource("4_7cp38")
 enemy1_res = ExtResource("5_gxvkc")
 
@@ -366,17 +327,17 @@ libraries = {
 }
 
 [node name="Enemy1Cell" type="Node2D" parent="." groups=["enemy"]]
-position = Vector2(192, 321)
+position = Vector2(192, 221)
 script = ExtResource("3_kie5r")
 enemy_res = ExtResource("5_gxvkc")
 
-[node name="Enemy1CellSprite2D" type="Sprite2D" parent="Enemy1Cell"]
+[node name="Sprite2D" type="Sprite2D" parent="Enemy1Cell"]
 position = Vector2(0, -1)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.2, 0.2)
 hframes = 3
 region_rect = Rect2(200, 152, 520, 1040)
 
-[node name="Enemy1CellDamageLabel" type="Label" parent="Enemy1Cell"]
+[node name="Enemy1DamageLabel" type="Label" parent="Enemy1Cell"]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -389,32 +350,6 @@ grow_vertical = 2
 [node name="Enemy1CellAnimationPlayer" type="AnimationPlayer" parent="Enemy1Cell"]
 libraries = {
 &"": SubResource("AnimationLibrary_vgm1q")
-}
-
-[node name="Enemy2Cell" type="Node2D" parent="." groups=["enemy"]]
-position = Vector2(192, 124)
-script = ExtResource("8_uph8t")
-enemy_res = ExtResource("7_cvn1i")
-
-[node name="Enemy2CellSprite2D" type="Sprite2D" parent="Enemy2Cell"]
-position = Vector2(0, -1)
-scale = Vector2(0.1, 0.1)
-hframes = 3
-region_rect = Rect2(200, 152, 520, 1040)
-
-[node name="Enemy2CellDamageLabel" type="Label" parent="Enemy2Cell"]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 68.0
-offset_top = -11.0
-offset_right = 117.0
-offset_bottom = 12.0
-grow_vertical = 2
-
-[node name="Enemy2CellAnimationPlayer" type="AnimationPlayer" parent="Enemy2Cell"]
-libraries = {
-&"": SubResource("AnimationLibrary_sainw")
 }
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -453,7 +388,7 @@ theme_override_font_sizes/font_size = 30
 text = " Enemy "
 
 [node name="Enemy1ProgressBar" type="ProgressBar" parent="CanvasLayer/Panel/HBoxContainer/HpContainer"]
-custom_minimum_size = Vector2(100, 20)
+custom_minimum_size = Vector2(100, 27)
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_fonts/font = ExtResource("6_7cp38")
@@ -465,45 +400,16 @@ show_percentage = false
 
 [node name="Label" type="Label" parent="CanvasLayer/Panel/HBoxContainer/HpContainer/Enemy1ProgressBar"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -47.0
-offset_top = -11.5
+offset_top = -23.0
 offset_right = 47.0
-offset_bottom = 11.5
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("6_7cp38")
-theme_override_font_sizes/font_size = 20
-text = "HP 50/100"
-
-[node name="Enemy2ProgressBar" type="ProgressBar" parent="CanvasLayer/Panel/HBoxContainer/HpContainer"]
-custom_minimum_size = Vector2(100, 20)
-layout_mode = 2
-size_flags_vertical = 6
-theme_override_fonts/font = ExtResource("6_7cp38")
-theme_override_styles/background = SubResource("StyleBoxFlat_gxvkc")
-theme_override_styles/fill = SubResource("StyleBoxFlat_7cp38")
-step = 1.0
-value = 50.0
-show_percentage = false
-
-[node name="Label" type="Label" parent="CanvasLayer/Panel/HBoxContainer/HpContainer/Enemy2ProgressBar"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -47.0
-offset_top = -11.5
-offset_right = 47.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 theme_override_fonts/font = ExtResource("6_7cp38")
 theme_override_font_sizes/font_size = 20
 text = "HP 50/100"

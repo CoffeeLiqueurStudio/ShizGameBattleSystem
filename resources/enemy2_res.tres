@@ -1,3 +1,15 @@
-[gd_resource type="Resource" format=3 uid="uid://dqwedt7o1x1ht"]
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=3 format=3 uid="uid://dqwedt7o1x1ht"]
+
+[ext_resource type="Script" uid="uid://xngq5011yp8h" path="res://scripts/enemy_res/enemy_res.gd" id="1_vhwaq"]
+[ext_resource type="Texture2D" uid="uid://cia8i06oktbu1" path="res://assets/enemy/zubastik_right.png" id="2_yj8a0"]
 
 [resource]
+script = ExtResource("1_vhwaq")
+name = "zubastik2"
+texture = ExtResource("2_yj8a0")
+max_hp = 40
+current_hp = 40
+min_damage = 40
+max_damage = 42
+defend = 1
+is_defending = false

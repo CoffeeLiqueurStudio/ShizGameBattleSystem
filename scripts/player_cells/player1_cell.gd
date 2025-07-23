@@ -52,3 +52,4 @@ func _physics_process(delta: float) -> void:
 			#animation_player.play(str(name)+"_take_damage")
 			#await animation_player.animation_finished
 			active_state = states.IDLE
+	

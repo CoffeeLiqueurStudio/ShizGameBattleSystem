@@ -1,10 +1,9 @@
 extends Node2D
 
 @export var enemy_res: Resource = null
-@onready var enemy_1_cell_sprite_2d: Sprite2D = $Enemy1CellSprite2D
-@onready var enemy_1_progress_bar: ProgressBar = $"../CanvasLayer/Panel/HBoxContainer/HpContainer/Enemy1ProgressBar"
-@onready var enemy_1_cell_damage_label: Label = $Enemy1CellDamageLabel
-
+@onready var enemy_2_cell_sprite_2d: Sprite2D = $Enemy2CellSprite2D
+@onready var enemy_2_progress_bar: ProgressBar = $"../CanvasLayer/Panel/HBoxContainer/HpContainer/Enemy2ProgressBar"
+@onready var enemy_2_damage_label: Label = $Enemy2CellDamageLabel
 @onready var animation_player_text: AnimationPlayer = $"../AnimationPlayerText"
 @onready var action_label: Label = $"../CanvasLayer/ActionLabel"
 
@@ -20,15 +19,15 @@ var on_effect_duration2: int = 0
 var on_effect_max_duration2: int = 0
 
 func _ready() -> void:
-	enemy_1_cell_sprite_2d.texture = enemy_res.texture
-	set_health(enemy_1_progress_bar, enemy_res.current_hp, enemy_res.max_hp)
+	enemy_2_cell_sprite_2d.texture = enemy_res.texture
+	set_health(enemy_2_progress_bar, enemy_res.current_hp, enemy_res.max_hp)
 	
-func take_damage(damage):
+func take_damage(damage,):
 	active_state = states.TAKE_DAMAGE
 	enemy_res.current_hp = max(0, enemy_res.current_hp - damage)
-	set_health(enemy_1_progress_bar, enemy_res.current_hp, enemy_res.max_hp)
+	set_health(enemy_2_progress_bar, enemy_res.current_hp, enemy_res.max_hp)
 	action_label.text = ("Player attack and damage %d to enemy." % [damage])
-	enemy_1_cell_damage_label.text = str(damage)
+	enemy_2_damage_label.text = str(damage)
 	animation_player_text.play(str(name)+"_damage")
 func take_effect_damage(damage, effect, effect_max_duration):
 	active_state = states.TAKE_DAMAGE
@@ -67,8 +66,8 @@ func take_effect_damage(damage, effect, effect_max_duration):
 			else:
 				pass
 	enemy_res.current_hp = max(0, enemy_res.current_hp - damage)
-	set_health(enemy_1_progress_bar, enemy_res.current_hp, enemy_res.max_hp)
-	enemy_1_cell_damage_label.text = str(damage)
+	set_health(enemy_2_progress_bar, enemy_res.current_hp, enemy_res.max_hp)
+	enemy_2_damage_label.text = str(damage)
 	animation_player_text.play(str(name)+"_damage")
 func set_health(progress_bar, health, max_health):
 	progress_bar.value = health
